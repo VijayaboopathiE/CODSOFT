@@ -1,0 +1,31 @@
+import java.util.*;
+public class RandomNumberGame {
+    public static int ran(){
+         Random r=new Random();
+        int nu=r.nextInt(100)+1;
+        return nu;
+    }
+  public static void find(int nu,int chance,int chances) {
+        Scanner s=new Scanner(System.in);
+        if(chances<chance) {
+            System.out.println("Total Chances You Have: "+(chance-chances));
+            System.out.println("Guess the number between 1 and 100: ");
+            int input = s.nextInt();
+            if (input==nu) {
+                System.out.printf("Congratulations! You guessed the correct number %d in %d attempts.\n",nu,chances+1);
+            } else if(input<nu) {
+                System.out.println("Too low. Try again.");
+                find(nu,chance,chances+1);
+            } else {
+                System.out.println("Too high. Try again.");
+                find(nu,chance,chances+1);
+            }
+        } else {
+            System.out.printf("Sorry, you've reached the maximum number of attempts. The correct number was %d.\n",nu);
+        }
+    }   public static void main(String[]vb) {
+       int nu=ran();
+       int ch=10,chs=0;
+        find(nu,ch,chs);
+    }
+}
